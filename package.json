@@ -1,0 +1,21 @@
+{
+  "name": "app2",
+  "version": "1.0.0",
+  "description": "Node.js Application - Stock Quote API",
+  "main": "app.js",
+  "scripts": {
+    "test": "GET /test"
+  },
+  "keywords": [
+    "API",
+    "Express",
+    "Node",
+    "Axios"
+  ],
+  "author": "Valentine Wu",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "express": "^4.17.1"
+  }
+}
