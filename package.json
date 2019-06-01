@@ -4,7 +4,7 @@
   "description": "Node.js Application - Stock Quote API",
   "main": "app.js",
   "scripts": {
-    "test": "GET /test"
+    "start": "node app.js"
   },
   "keywords": [
     "API",

@@ -14,24 +14,31 @@ app.get('/quote', (req, res) => {
    const symbol = req.query.symbol;
    const token = req.query.token;
    if (symbol && token) {
-   axios({
-      method: 'get',
-      url: host + '?symbols=' + symbol + '&token=' + token,
-      headers: { 'Origin': 'https://web.tmxmoney.com' }
-   })
-      .then(resp => {
-         const quote = resp.data.results.quote[0];
-         console.log("Got quote info ... ");
-         console.log(quote);
-         res.send(resp.data.results.quote[0]);
-      }).catch(error => {
-         console.error(error);
-         res.send(error);
-      });
+      axios({
+         method: 'get',
+         url: host + '?symbols=' + symbol + '&token=' + token,
+         headers: { 'Origin': 'https://web.tmxmoney.com' }
+      })
+         .then(resp => {
+            const quote = resp.data.results.quote[0];
+            console.log("Got quote info ... ");
+            console.log(quote);
+            const exchange = quote.key.exchange
+            if (exchange) {
+               res.status(200).send(quote);
+            } else {
+               const noSuchSymbol = "Cannot find any exchanges with entered quote - " + symbol;
+               console.log(noSuchSymbol);
+               res.status(400).send(noSuchSymbol);
+            }
+         }).catch(error => {
+            console.error(error);
+            res.send(error);
+         });
    } else {
-      res.sendStatus(400).send('Usage: /quote?symbol=xxx&token=xxx');
+      res.status(400).send('Bad Request. Usage: /quote?symbol=xxx&token=xxx');
    }
-   
+
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
