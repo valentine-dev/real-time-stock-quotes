@@ -1,10 +1,14 @@
 {
-  "name": "app2",
-  "version": "1.0.0",
-  "description": "Node.js Application - Stock Quote API",
+  "name": "real-time-stock-quotes",
+  "version": "1.1.0",
+  "description": "Node.js Application - Real-time Stock Quote API",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/valentine-dev/real-time-stock-quotes.git"
   },
   "keywords": [
     "API",
@@ -14,8 +18,11 @@
   ],
   "author": "Valentine Wu",
   "license": "ISC",
+  "homepage": "https://github.com/valentine-dev/real-time-stock-quotes",
   "dependencies": {
     "axios": "^0.19.0",
-    "express": "^4.17.1"
+    "config": "^3.1.0",
+    "express": "^4.17.1",
+    "js-yaml": "^3.13.1"
   }
 }
