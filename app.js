@@ -23,6 +23,9 @@ if (!host) {
 const headers = config.has('access.headers') ? config.get('access.headers') : { 'Origin': 'https://web.tmxmoney.com' };
 console.log("----> Access Headers: " + JSON.stringify(headers));
 
+// response
+const cors = config.has('response.headers.accessControlAllowOrigin') ? config.get('response.headers.accessControlAllowOrigin') : '*';
+
 // help messasges
 const app = express();
 const testMessage = config.has('help.message.test') ? config.get('help.message.test') : 'Fine';
@@ -33,6 +36,7 @@ app.get('/', (req, res) => res.send(defaultMessage));
 app.get('/quote', (req, res) => {
    const symbol = req.query.symbol;
    const token = req.query.token;
+   res.set('Access-Control-Allow-Origin', cors);
    if (symbol && token) {
       axios({
          method: 'get',
@@ -46,7 +50,7 @@ app.get('/quote', (req, res) => {
          if (exchange) {
             res.status(200).send(quote);
          } else {
-            const noSuchSymbol = "Cannot find any exchanges with entered quote - " + symbol;
+            const noSuchSymbol = "Cannot find any exchanges with entered symbol - " + symbol;
             console.log(noSuchSymbol);
             res.status(400).send(noSuchSymbol);
          }
