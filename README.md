@@ -10,6 +10,7 @@ Real-time Stock Quotes Using React and Node.js
 5. In Browser, Go to [`http://localhost:3000/quote?symbol=GIB.A&&token=xxx`](http://localhost:3000/quote?symbol=GIB.A&&token=xxx) to Get Stock Quote
 
 ## Sample Response
+GIB.A:
 ```json
 {
    "equityinfo":{
@@ -42,36 +43,37 @@ Real-time Stock Quotes Using React and Node.js
    "symbolstring":"GIB.A"
 }
 ```
+BBD.B:
 ```json
 {
-  equityinfo: {
-    longname: 'Bombardier Inc. Class B Subordinate Voting Shares',
-    shortname: 'Bombardier Cl B '
+  "equityinfo": {
+    "longname": "Bombardier Inc. Class B Subordinate Voting Shares",
+    "shortname": "Bombardier Cl B "
   },
-  pricedata: {
-    changepercent: 0.49505,
-    high: 2.03,
-    lasttradedatetime: '2019-05-31T16:17:43-04:00',
-    last: 2.03,
-    low: 1.985,
-    change: 0.01,
-    tradevolume: 5436,
-    prevclose: 2.02,
-    tick: -1,
-    lastmarketidentificationcode: 'TSX',
-    open: 2.02,
-    sharevolume: 7377181
+  "pricedata": {
+    "changepercent": 0.49505,
+    "high": 2.03,
+    "lasttradedatetime": "2019-05-31T16:17:43-04:00",
+    "last": 2.03,
+    "low": 1.985,
+    "change": 0.01,
+    "tradevolume": 5436,
+    "prevclose": 2.02,
+    "tick": -1,
+    "lastmarketidentificationcode": "TSX",
+    "open": 2.02,
+    "sharevolume": 7377181
   },
-  datetime: '2019-06-01T19:14:27-04:00',
-  datatype: 'equity',
-  entitlement: 'RT',
-  key: {
-    exShName: 'TSX',
-    symbol: 'BBD.B:CA',
-    exchange: 'TSX',
-    exLgName: 'Toronto Stock Exchange'
+  "datetime": "2019-06-01T19:14:27-04:00",
+  "datatype": "equity",
+  "entitlement": "RT",
+  "key": {
+    "exShName": "TSX",
+    "symbol": "BBD.B:CA",
+    "exchange": "TSX",
+    "exLgName": "Toronto Stock Exchange"
   },
-  symbolstring: 'BBD.B'
+  "symbolstring": "BBD.B"
 }
   ```
 
