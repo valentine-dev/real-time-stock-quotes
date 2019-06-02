@@ -2,12 +2,15 @@
 Real-time Stock Quotes Using React and Node.js
 
 ## Steps to Run
-0. Copy app.js and package.json
-1. Install Node.js
-2. Run "npm install" to Get Dependencies
-3. Run "node app.js" to Start Server
-4. Find an access token
-5. In Browser, Go to [`http://localhost:3000/quote?symbol=GIB.A&&token=xxx`](http://localhost:3000/quote?symbol=GIB.A&&token=xxx) to Get Stock Quote
+0. Copy app.js, package.json, and files in folder config;
+1. Install Node.js;
+2. Run "npm install" to get dependencies;
+3. Run "npm start" to start server;
+4. Find an access token;
+5. In Browser, Go to [`http://localhost:3000/quote?symbol=GIB.A&&token=xxx`](http://localhost:3000/quote?symbol=GIB.A&&token=xxx) to use this web application.
+
+## Configuration
+default.yml in folder config is the configuration file. 
 
 ## Sample Response
 GIB.A:
