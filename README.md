@@ -84,4 +84,10 @@ BBD.B:
 * UI using React JS
   1. Add input text field
   2. Add output display field
+  
+## Google App Engine Deployment
+An `app.yaml` file is required to deploy as an App Engine application. 
+Create an app.yaml file using the following directions:
+* for [App Engine Flexible Environment](https://cloud.google.com/appengine/docs/flexible/nodejs/configuring-your-app-with-app-yaml);
+* for [App Engine Standard Environment](https://cloud.google.com/appengine/docs/standard/nodejs/config/appref).
 
