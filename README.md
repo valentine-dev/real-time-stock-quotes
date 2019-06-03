@@ -1,23 +1,24 @@
 # Free Real-time Stock Quotes
 Real-time Stock Quotes Using `React` and `Node.js`
 
-## Steps to Run
-0. Copy `app.js`, `package.json`, and all files in folder `config`;
+## How to Run the Application
+1. Install `Node.js`;
+2. Run `npm install` to get dependencies;
+3. Run `npm start` to start server;
+4. Run in the browser by going to [`http://localhost:8080/ui`](http://localhost:8080/ui).
+
+## API - Steps to Test
 1. Install `Node.js`;
 2. Run `npm install` to get dependencies;
 3. Run `npm start` to start server;
 4. Find an access token;
-5. In Browser, go to [`http://localhost:4000/quote?symbol=GIB.A&&token=xxx`](http://localhost:4000/quote?symbol=GIB.A&&token=xxx) to try this web application.
+5. In the browser, go to [`http://localhost:8080/quote?symbol=GIB.A&&token=xxx`](http://localhost:8080/quote?symbol=GIB.A&&token=xxx) to test API.
 
 ## UI - Create React App application
-1. `build` folder is a production build of this Create React App application.
-2. `ui` folder is where to develop this Create React App application.
-3. Before development: Create a React app, copy all the files in `ui` to the project folder, and run `npm install`.
-4. After development: Build the app for production to the project `build` folder, and copy all the files inside to the `build` folder of this repository.
-
-## Configuration
-`default.yml` in folder `config` is the configuration file.
--- will change to use `dotenv`: https://www.npmjs.com/package/dotenv
+1. `ui` folder is a production build of ui component, which is a Create React App application.
+2. `react` folder is where to develop this Create React App application.
+3. Before development: Create a React app, copy all the files in `react` to the project folder, and run `npm install`.
+4. After development: Build the app for production to the project `build` folder, and copy all the files inside to the `ui` folder of this repository.
 
 ## Sample Response
 GIB.A:
