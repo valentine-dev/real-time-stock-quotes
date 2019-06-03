@@ -91,3 +91,7 @@ Create an app.yaml file using the following directions:
 * for [App Engine Flexible Environment](https://cloud.google.com/appengine/docs/flexible/nodejs/configuring-your-app-with-app-yaml);
 * for [App Engine Standard Environment](https://cloud.google.com/appengine/docs/standard/nodejs/config/appref).
 
+## Demo Videos at YouTube
+1. [v0.1.1 Go Clouding: Deployed to Google Cloud Platform - App Engine](https://youtu.be/VyDsbqdMsZA)
+2. [Always Responsive & Mobile First - v0.1.1 of React & Node.js App: Real-Time Stock Quotes](https://youtu.be/bePuW3FE95o)
+3. [React & Node.js Web/Cloud App: Real-Time Stock Quotes, v0.1.0](https://youtu.be/PAaxgxnC9U8) 
