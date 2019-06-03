@@ -7,7 +7,13 @@ Real-time Stock Quotes Using `React` and `Node.js`
 2. Run `npm install` to get dependencies;
 3. Run `npm start` to start server;
 4. Find an access token;
-5. In Browser, go to [`http://localhost:3000/quote?symbol=GIB.A&&token=xxx`](http://localhost:3000/quote?symbol=GIB.A&&token=xxx) to try this web application.
+5. In Browser, go to [`http://localhost:4000/quote?symbol=GIB.A&&token=xxx`](http://localhost:4000/quote?symbol=GIB.A&&token=xxx) to try this web application.
+
+## UI - Create React App application
+1. `build` folder is a production build of this Create React App application.
+2. `ui` folder is where to develop this Create React App application.
+3. Before development: Create a React app, copy all the files in `ui` to the project folder, and run `npm install`.
+4. After development: Build the app for production to the project `build` folder, and copy all the files inside to the `build` folder of this repository.
 
 ## Configuration
 `default.yml` in folder `config` is the configuration file.
@@ -80,12 +86,6 @@ BBD.B:
   "symbolstring": "BBD.B"
 }
   ```
-
-## To do items
-* UI using React JS
-  1. Add input text field
-  2. Add output display field
-  
 ## Google App Engine Deployment
 An `app.yaml` file is required to deploy as an App Engine application. 
 Create an app.yaml file using the following directions:
@@ -96,3 +96,10 @@ Create an app.yaml file using the following directions:
 1. [v0.1.1 Go Clouding: Deployed to Google Cloud Platform - App Engine](https://youtu.be/VyDsbqdMsZA)
 2. [Always Responsive & Mobile First - v0.1.1 of React & Node.js App: Real-Time Stock Quotes](https://youtu.be/bePuW3FE95o)
 3. [React & Node.js Web/Cloud App: Real-Time Stock Quotes, v0.1.0](https://youtu.be/PAaxgxnC9U8) 
+
+## To Do items
+* UI using React JS
+  1. Add a Modal to get token
+* API using Node.js
+  1. Use notenv
+  2. Use Express generator
