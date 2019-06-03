@@ -1,6 +1,6 @@
 {
   "name": "real-time-stock-quotes",
-  "version": "1.1.0",
+  "version": "0.1.2",
   "description": "Node.js Application - Real-time Stock Quote API",
   "main": "app.js",
   "scripts": {
@@ -21,9 +21,7 @@
   "homepage": "https://github.com/valentine-dev/real-time-stock-quotes",
   "dependencies": {
     "axios": "^0.19.0",
-    "config": "^3.1.0",
     "express": "^4.17.1",
-    "js-yaml": "^3.13.1",
     "path": "^0.12.7"
   }
 }
