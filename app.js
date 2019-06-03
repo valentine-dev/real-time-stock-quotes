@@ -25,7 +25,7 @@ const headers = config.has('access.headers') ? config.get('access.headers') : { 
 console.log("----> Access Headers: " + JSON.stringify(headers));
 
 // response
-const cors = config.has('response.headers.accessControlAllowOrigin') ? config.get('response.headers.accessControlAllowOrigin') : '*';
+//const cors = config.has('response.headers.accessControlAllowOrigin') ? config.get('response.headers.accessControlAllowOrigin') : '*';
 
 // help messasges
 const app = express();
@@ -43,7 +43,7 @@ app.get('/', function(req, res) {
 app.get('/quote', (req, res) => {
    const symbol = req.query.symbol;
    const token = req.query.token;
-   res.set('Access-Control-Allow-Origin', cors);
+   //res.set('Access-Control-Allow-Origin', cors);
    if (symbol && token) {
       axios({
          method: 'get',
