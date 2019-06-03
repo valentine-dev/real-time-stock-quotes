@@ -3,6 +3,7 @@
 const axios = require('axios');
 const express = require('express');
 const config = require('config');
+const path = require('path');
 
 // port
 const configuredPort = config.has('server.port') ? config.get('server.port') : 3000;
@@ -32,7 +33,13 @@ const testMessage = config.has('help.message.test') ? config.get('help.message.t
 const defaultMessage = config.has('help.message.default') ? config.get('help.message.default') : 'Usage: /quote?symbol=xxx&token=xxx';
 
 app.get('/test', (req, res) => res.send(testMessage));
-app.get('/', (req, res) => res.send(defaultMessage));
+// app.get('/', (req, res) => res.send(defaultMessage));
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 app.get('/quote', (req, res) => {
    const symbol = req.query.symbol;
    const token = req.query.token;
