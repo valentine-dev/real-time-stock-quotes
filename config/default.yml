@@ -4,9 +4,6 @@ access:
     Origin: https://web.tmxmoney.com
 server:
   port: 4000
-response:
-  headers:
-    accessControlAllowOrigin: '*'
 help:
   message:
     test: App is running well!
