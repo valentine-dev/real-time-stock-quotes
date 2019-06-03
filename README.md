@@ -10,7 +10,8 @@ Real-time Stock Quotes Using `React` and `Node.js`
 5. In Browser, go to [`http://localhost:3000/quote?symbol=GIB.A&&token=xxx`](http://localhost:3000/quote?symbol=GIB.A&&token=xxx) to try this web application.
 
 ## Configuration
-`default.yml` in folder `config` is the configuration file. 
+`default.yml` in folder `config` is the configuration file.
+-- will change to use `dotenv`: https://www.npmjs.com/package/dotenv
 
 ## Sample Response
 GIB.A:
