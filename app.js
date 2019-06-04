@@ -52,7 +52,15 @@ app.get('/quote', (req, res) => {
          }
       }).catch(error => {
          console.error(error);
-         res.send(error).end();
+         if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log(error.response.data);
+            console.log(error.response.status);
+            res.status(error.response.status).send(error).end();
+         } else {
+            res.send(error.name + ": " + error.message).end();
+         }
       });
    } else {
       res.status(400).send('Bad Request. Usage: /quote?symbol=xxx&token=xxx').end();

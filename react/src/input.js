@@ -16,12 +16,21 @@ class GetQuote extends Component {
    getQuote = () => {
       axios.get('/quote?symbol=' + this.state.symbol + '&token=' + this.props.token)
          .then(res => {
+            console.log(res);
             const quote = res.data;
-            console.log("Got last price ... ");
             console.log(quote);
-            const message = quote.symbolstring + ': ' + quote.equityinfo.longname + ' on ' + quote.key.exLgName;
-            this.setState({ ...this.state, "errorMessage": null, 'message': message });
-            this.props.handleSubmit(quote);
+            if (quote && quote.pricedata && quote.pricedata.last) {
+               console.log("Got last price ... ");
+               const message = quote.symbolstring + ': ' + quote.equityinfo.longname + ' on ' + quote.key.exLgName;
+               this.setState({ ...this.state, "errorMessage": null, 'message': message });
+               this.props.handleSubmit(quote);
+            } else if (quote && quote.name === 'Error') {
+               const message = quote.name + ": " + quote.message;
+               console.log(message);
+               this.setState({ ...this.state, "errorMessage": message });
+            } else {
+               this.setState({ ...this.state, "errorMessage": "Oops, something went wrong!" });
+            }
          })
          .catch(err => {
             console.log(err);
@@ -31,7 +40,14 @@ class GetQuote extends Component {
                console.log(err.response.data);
                console.log(err.response.status);
                console.log(err.response.headers);
-               const message = err.response.data.includes('Cannot GET /quote') ? 'The API backend is not available. Please have a check.' : 'HTTP ' + err.response.status + ': ' + err.response.data; 
+               let message;
+               if (typeof err.response.data === 'string') {
+                  message = err.response.data.includes('Cannot GET /quote') ? 'The API backend is not available. Please have a check.' : 'HTTP ' + err.response.status + ': ' + err.response.data;
+               } else if (typeof err.response.data === 'object') {
+                  message = err.response.data.name + ": " + err.response.data.message;
+               } else {
+                  message = "Oops, something went wrong!";
+               }
                this.setState({ ...this.state, "errorMessage": message });
             } else {
                this.setState({ ...this.state, "errorMessage": "Oops, something went wrong!" });
@@ -55,21 +71,20 @@ class GetQuote extends Component {
       const displayMessage = this.state.message === null ? false : true;
       return (
          <Container>
-
             <Form autoComplete="off" onSubmit={e => e.preventDefault()} >
-               <Form.Group as={Row} controlId="formPlaintextPassword">
-                  <Form.Label column xs="2">
+               <Form.Group as={Row} >
+                  <Form.Label column xs="2" className="d-flex justify-content-end">
                      Quote:
                   </Form.Label>
                   <Col xs="8">
-                     <Form.Control type="text" onChange={this.handleInputChange} />
+                     <Form.Control type="text" onChange={this.handleInputChange} placeholder="Enter a symbol like RBA, FTNT:US, or J:CNX" />
                   </Col>
-                  {disableGet ? null : <Button xs="2" onClick={this.getQuote}>GO</Button>}
+                  {disableGet ? null : <Col xs="2"><Button onClick={this.getQuote}>GO</Button></Col>}
                </Form.Group>
             </Form>
             {displayMessage ? <Alert variant='info'>{this.state.message}</Alert> : null}
             {displayError ? <Alert variant='warning'>{this.state.errorMessage}</Alert> : null}
-         </Container >
+         </Container>
       )
    }
 }
