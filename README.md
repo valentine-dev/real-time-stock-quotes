@@ -100,7 +100,7 @@ Create an app.yaml file using the following directions:
 
 ## To Do items
 * UI using React JS
-  1. Add a Modal to get token
+  1. Show recent symbols in NavBar dropdown list;
+  2. Show charts.
 * API using Node.js
-  1. Use notenv
-  2. Use Express generator
+  1. Use Express generator.
