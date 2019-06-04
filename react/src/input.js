@@ -10,25 +10,18 @@ import axios from 'axios';
 class GetQuote extends Component {
    constructor(props) {
       super(props);
-      this.state = { symbol: null, message: null }
+      this.state = { symbol: null, errorMessage: null, message: null }
    }
 
    getQuote = () => {
       axios.get('/quote?symbol=' + this.state.symbol + '&token=' + this.props.token)
          .then(res => {
             const quote = res.data;
-            console.log("Got quote info ... ");
+            console.log("Got last price ... ");
             console.log(quote);
-            const exchange = quote.key.exchange;
-            if (exchange) {
-               console.log("SUCCESS!");
-               this.setState({ ...this.state, "message": null });
-               this.props.handleSubmit(quote);
-            } else {
-               const noSuchSymbol = "Cannot find any exchanges with entered quote - " + this.state.symbol;
-               console.log(noSuchSymbol);
-               this.setState({ ...this.state, "message": noSuchSymbol });
-            }
+            const message = quote.symbolstring + ': ' + quote.equityinfo.longname + ' on ' + quote.key.exLgName;
+            this.setState({ ...this.state, "errorMessage": null, 'message': message });
+            this.props.handleSubmit(quote);
          })
          .catch(err => {
             console.log(err);
@@ -38,16 +31,17 @@ class GetQuote extends Component {
                console.log(err.response.data);
                console.log(err.response.status);
                console.log(err.response.headers);
-               this.setState({ ...this.state, "message":  err.response.data});
-             } else {
-               this.setState({ ...this.state, "message":  "Oops, something went wrong!"}); 
-             }
-            
+               const message = err.response.data.includes('Cannot GET /quote') ? 'The API backend is not available. Please have a check.' : 'HTTP ' + err.response.status + ': ' + err.response.data; 
+               this.setState({ ...this.state, "errorMessage": message });
+            } else {
+               this.setState({ ...this.state, "errorMessage": "Oops, something went wrong!" });
+            }
+
          });
    }
 
    handleInputChange = (event) => {
-      this.setState({ ...this.state, "symbol": event.target.value, "message": null });
+      this.setState({ ...this.state, "symbol": event.target.value, "errorMessage": null, "message": null });
    }
 
    render() {
@@ -57,6 +51,7 @@ class GetQuote extends Component {
          disableGet = false;
       }
 
+      const displayError = this.state.errorMessage === null ? false : true;
       const displayMessage = this.state.message === null ? false : true;
       return (
          <Container>
@@ -72,7 +67,8 @@ class GetQuote extends Component {
                   {disableGet ? null : <Button xs="2" onClick={this.getQuote}>GO</Button>}
                </Form.Group>
             </Form>
-            {displayMessage ? <Alert variant='warning'>{this.state.message}</Alert> : null}
+            {displayMessage ? <Alert variant='info'>{this.state.message}</Alert> : null}
+            {displayError ? <Alert variant='warning'>{this.state.errorMessage}</Alert> : null}
          </Container >
       )
    }
