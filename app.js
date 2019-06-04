@@ -42,11 +42,11 @@ app.get('/quote', (req, res) => {
          const quote = resp.data.results.quote[0];
          console.log("Got quote info ... ");
          console.log(quote);
-         const exchange = quote.key.exchange
-         if (exchange) {
+         
+         if (quote && quote.pricedata && quote.pricedata.last) {
             res.status(200).send(quote).end();
          } else {
-            const noSuchSymbol = "Cannot find any exchanges with entered symbol - " + symbol;
+            const noSuchSymbol = "No data at TSX/TSXV for - " + symbol;
             console.log(noSuchSymbol);
             res.status(400).send(noSuchSymbol).end();
          }

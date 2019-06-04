@@ -22,7 +22,7 @@ class App extends Component {
          <Container>
             <Navbar bg="dark" variant="dark" sticky="top" expand>
                <Navbar.Brand href="#home">                  
-                  {'Valentine Wu, 2019'}
+                  {'Valentine Wu - 2019'}
                </Navbar.Brand>
             </Navbar>
             <Alert variant="success">
