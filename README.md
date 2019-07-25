@@ -14,7 +14,7 @@ Real-time Stock Quotes Using `React` and `Node.js`
 4. Find an access token;
 5. In the browser, go to [`http://localhost:8080/quote?symbol=GIB.A&&token=xxx`](http://localhost:8080/quote?symbol=GIB.A&&token=xxx) to test API.
 
-## UI - Create React App application
+## UI - Create React App ([`?`](https://github.com/nitishdayal/cra_closer_look)) application 
 1. `ui` folder is a production build of ui component, which is a Create React App application.
 2. `react` folder is where to develop this Create React App application.
 3. Before development: Create a React app, copy all the files in `react` to the project folder, and run `npm install`.
