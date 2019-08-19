@@ -15,10 +15,10 @@ Real-time Stock Quotes Using `React` and `Node.js`
 5. In the browser, go to [`http://localhost:8080/quote?symbol=GIB.A&&token=xxx`](http://localhost:8080/quote?symbol=GIB.A&&token=xxx) to test API.
 
 ## UI - Create React App ([`?`](https://github.com/nitishdayal/cra_closer_look)) application 
-1. `ui` folder is a production build of ui component, which is a Create React App application.
+1. `docs` folder is a production build of ui component, which is a Create React App application.
 2. `react` folder is where to develop this Create React App application.
 3. Before development: Create a React app, copy all the files in `react` to the project folder, and run `npm install`.
-4. After development: Build the app for production to the project `build` folder, and copy all the files inside to the `ui` folder of this repository.
+4. After development: Build the app for production to the project `build` folder, and copy all the files inside to the `docs` folder of this repository.
 
 ## Sample Response
 GIB.A:
