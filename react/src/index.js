@@ -24,16 +24,16 @@ class App extends Component {
          <Container>
             <Navbar bg="dark" variant="dark" sticky="top" expand>
                <Navbar.Brand href="#home">
-                  {'Valentine Wu - 2019'}
+                  {'finance.enjoyit.ca - 2020'}
                </Navbar.Brand>
             </Navbar>
             <Alert variant="success">
                <Alert.Heading>FREE Real-Time Stock Quotes for Companies Listed on TSX</Alert.Heading>
                <p>
-                  Companies on US exchanges, append ":US", like <code>FTNT:US</code>
+                  For US exchanges, append ":us", like <code>tqqq:us</code>
                </p>
                <p>
-                  Companies on Canadian Securities Exchange, append ":CNX", like <code>J:CNX</code>
+                  For Canadian Securities Exchange, append ":cnx", like <code>j:cnx</code>
                </p>
             </Alert>
             <GetQuote handleSubmit={this.getQuote} token={process.env.REACT_APP_TOKEN} />
@@ -44,5 +44,3 @@ class App extends Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
-
