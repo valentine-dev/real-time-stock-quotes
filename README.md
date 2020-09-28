@@ -18,7 +18,15 @@ Real-time Stock Quotes Using `React` and `Node.js`
 1. `docs` folder is a production build of ui component, which is a Create React App application.
 2. `react` folder is where to develop this Create React App application.
 3. Before development: Create a React app, copy all the files in `react` to the project folder, and run `npm install`.
+Command line in Windows:
+```
+rmdir /S /Q ui && mkdir ui && cd ui && xcopy /S ..\react\. . && npm install
+```
 4. After development: Build the app for production to the project `build` folder, and copy all the files inside to the `docs` folder of this repository.
+Command line in Windows:
+```
+npm run build && rmdir /S /Q ..\docs &&  mkdir ..\docs && xcopy /S .\build\. ..\docs\. && cd .. && npm start
+```
 5. Update index.html in the `docs` folder to replace `href="\` with `href="`, `src="\` with `src="`.
 
 ## Sample Response
