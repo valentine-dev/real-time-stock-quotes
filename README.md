@@ -30,75 +30,102 @@ npm run build && rmdir /S /Q ..\docs &&  mkdir ..\docs && xcopy /S .\build\. ..\
 5. Update index.html in the `docs` folder to replace `href="\` with `href="`, `src="\` with `src="`.
 
 ## Sample Response
-[From TSX]
-GIB.A:
+From TSX - https://app.quotemedia.com/datatool/getEnhancedQuotes.json?symbols=GIB.A&token=7abe89f132178a218af699b6fe8f649336e9e47ae466945adda5a59e131ae612:
 ```json
 {
-   "equityinfo":{
-      "longname":"CGI Inc. Class A Subordinate  Voting Shares",
-      "shortname":"CGI Group Cl A S"
-   },
-   "pricedata":{
-      "changepercent":-0.182371,
-      "high":99.07,
-      "lasttradedatetime":"2019-05-31T16:00:00-04:00",
-      "last":98.52,
-      "low":98.26,
-      "change":-0.18,
-      "tradevolume":3141,
-      "prevclose":98.7,
-      "tick":1,
-      "lastmarketidentificationcode":"TSX",
-      "open":98.27,
-      "sharevolume":466518
-   },
-   "datetime":"2019-06-01T05:47:06-04:00",
-   "datatype":"equity",
-   "entitlement":"RT",
-   "key":{
-      "exShName":"TSX",
-      "symbol":"GIB.A:CA",
-      "exchange":"TSX",
-      "exLgName":"Toronto Stock Exchange"
-   },
-   "symbolstring":"GIB.A"
+    "results": {
+        "copyright": "Copyright (c) 2020 QuoteMedia, Inc.",
+        "symbolcount": 1,
+        "quote": [
+            {
+                "key": {
+                    "symbol": "GIB.A:CA",
+                    "exchange": "TSX",
+                    "exLgName": "Toronto Stock Exchange",
+                    "exShName": "TSX"
+                },
+                "equityinfo": {
+                    "longname": "CGI Inc. Class A Subordinate Voting Shares",
+                    "shortname": "CGI Inc."
+                },
+                "status": {},
+                "pricedata": {
+                    "last": 90.65,
+                    "change": 0.81,
+                    "changepercent": 0.901603,
+                    "tick": -1,
+                    "open": 90.27,
+                    "high": 91.59,
+                    "low": 90.13,
+                    "prevclose": 89.84,
+                    "bid": 90.62,
+                    "ask": 90.67,
+                    "bidsize": 100,
+                    "asksize": 100,
+                    "rawbidsize": 100,
+                    "rawasksize": 100,
+                    "tradevolume": 1151,
+                    "sharevolume": 125284,
+                    "vwap": 90.9676922,
+                    "lasttradedatetime": "2020-09-28T12:29:40-04:00",
+                    "totalvalue": 11396207.00,
+                    "lastmarketidentificationcode": "TSX",
+                    "bidmarketidentificationcode": "TSX",
+                    "askmarketidentificationcode": "TSX",
+                    "imbalance": {
+                        "imbalancesize": 0
+                    }
+                },
+                "fundamental": {
+                    "sharesoutstanding": 230589242,
+                    "shareclasslevelsharesoutstanding": 230589242,
+                    "totalsharesoutstanding": 259315428,
+                    "marketcap": 23506943548,
+                    "eps": 4.48999977,
+                    "peratio": 20.0,
+                    "pbratio": 3.382,
+                    "beta": 0.929967999458313,
+                    "week52high": {
+                        "date": "2020-01-24",
+                        "content": 114.49
+                    },
+                    "week52low": {
+                        "date": "2020-03-23",
+                        "content": 67.24
+                    },
+                    "week52highvwap": {
+                        "date": "2020-01-17",
+                        "content": 113.4199
+                    },
+                    "week52lowvwap": {
+                        "date": "2020-03-23",
+                        "content": 69.1994
+                    },
+                    "week52highvol": {
+                        "date": "2020-06-19",
+                        "content": 3490205
+                    },
+                    "week52lowvol": {
+                        "date": "2020-07-03",
+                        "content": 96790
+                    },
+                    "week52avgvol": 668070
+                },
+                "classification": {
+                    "sector": "Technology",
+                    "industry": "Software"
+                },
+                "symbolstring": "GIB.A",
+                "datatype": "equity",
+                "entitlement": "RT",
+                "datetime": "2020-09-28T12:32:11-04:00"
+            }
+        ]
+    }
 }
 ```
-BBD.B:
-```json
-{
-  "equityinfo": {
-    "longname": "Bombardier Inc. Class B Subordinate Voting Shares",
-    "shortname": "Bombardier Cl B "
-  },
-  "pricedata": {
-    "changepercent": 0.49505,
-    "high": 2.03,
-    "lasttradedatetime": "2019-05-31T16:17:43-04:00",
-    "last": 2.03,
-    "low": 1.985,
-    "change": 0.01,
-    "tradevolume": 5436,
-    "prevclose": 2.02,
-    "tick": -1,
-    "lastmarketidentificationcode": "TSX",
-    "open": 2.02,
-    "sharevolume": 7377181
-  },
-  "datetime": "2019-06-01T19:14:27-04:00",
-  "datatype": "equity",
-  "entitlement": "RT",
-  "key": {
-    "exShName": "TSX",
-    "symbol": "BBD.B:CA",
-    "exchange": "TSX",
-    "exLgName": "Toronto Stock Exchange"
-  },
-  "symbolstring": "BBD.B"
-}
-  ```
   
-[From Yahoo! Finance - https://query1.finance.yahoo.com/v7/finance/quote?formatted=true&symbols=TQQQ]
+From Yahoo! Finance - https://query1.finance.yahoo.com/v7/finance/quote?formatted=true&symbols=TQQQ:
 ```json
 {
     "quoteResponse": {
