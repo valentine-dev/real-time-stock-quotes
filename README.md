@@ -5,7 +5,7 @@ Real-time Stock Quotes Using `React` and `Node.js`
 1. Install `Node.js`;
 2. Run `npm install` to get dependencies;
 3. Run `npm start` to start server;
-4. Run in the browser by going to [`http://localhost:8080/ui`](http://localhost:8080/ui).
+4. Run in the browser by going to [`http://localhost:8080/`](http://localhost:8080/).
 
 ## API - Steps to Test
 1. Install `Node.js`;
