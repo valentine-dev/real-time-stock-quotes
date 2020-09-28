@@ -104,3 +104,6 @@ Create an app.yaml file using the following directions:
   2. Show charts.
 * API using Node.js
   1. Use Express generator.
+  
+## References
+1. https://create-react-app.dev/
