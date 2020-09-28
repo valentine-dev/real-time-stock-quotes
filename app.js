@@ -16,22 +16,27 @@ console.log("----> Access URL: " + host);
 const headers = { 'Origin': 'https://web.tmxmoney.com' };
 console.log("----> Access Headers: " + JSON.stringify(headers));
 
+// daily token
+const token = "7abe89f132178a218af699b6fe8f649336e9e47ae466945adda5a59e131ae612";
+
 // help messasges
 const app = express();
 const testMessage = 'Fine';
 const defaultMessage = 'API Usage: /quote?symbol=xxx&token=xxx';
 
 app.get('/test', (req, res) => res.send(testMessage).end());
-app.get('/', (req, res) => res.send(defaultMessage).end());
-app.use('/ui', express.static(path.join(__dirname, 'docs')));
+//app.get('/', (req, res) => res.send(defaultMessage).end());
+//app.use('/ui', express.static(path.join(__dirname, 'docs')));
+app.use('/', express.static(path.join(__dirname, 'docs')));
 
-app.get('/ui', function(req, res) {
+//app.get('/ui', function(req, res) {
+app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'docs', 'index.html')).end();
 });
 
 app.get('/quote', (req, res) => {
    const symbol = req.query.symbol;
-   const token = req.query.token;
+   //const token = req.query.token;
    
    if (symbol && token) {
       axios({
