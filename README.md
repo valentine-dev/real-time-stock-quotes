@@ -30,6 +30,7 @@ npm run build && rmdir /S /Q ..\docs &&  mkdir ..\docs && xcopy /S .\build\. ..\
 5. Update index.html in the `docs` folder to replace `href="\` with `href="`, `src="\` with `src="`.
 
 ## Sample Response
+[From TSX]
 GIB.A:
 ```json
 {
@@ -96,6 +97,179 @@ BBD.B:
   "symbolstring": "BBD.B"
 }
   ```
+  
+[From Yahoo! Finance - https://query1.finance.yahoo.com/v7/finance/quote?formatted=true&symbols=TQQQ]
+```json
+{
+    "quoteResponse": {
+        "result": [
+            {
+                "symbol": "TQQQ",
+                "trailingThreeMonthNavReturns": {
+                    "raw": 104.49,
+                    "fmt": "104.49%"
+                },
+                "twoHundredDayAverageChangePercent": {
+                    "raw": 0.33361712,
+                    "fmt": "33.36%"
+                },
+                "dividendDate": {
+                    "raw": 1427932800,
+                    "fmt": "2015-04-01",
+                    "longFmt": "2015-04-01T20:00"
+                },
+                "fiftyTwoWeekLowChangePercent": {
+                    "raw": 2.9006815,
+                    "fmt": "290.07%"
+                },
+                "language": "en-US",
+                "regularMarketDayRange": {
+                    "raw": "125.57 - 129.27",
+                    "fmt": "125.57 - 129.27"
+                },
+                "regularMarketDayHigh": {
+                    "raw": 129.27,
+                    "fmt": "129.27"
+                },
+                "twoHundredDayAverageChange": {
+                    "raw": 31.488838,
+                    "fmt": "31.49"
+                },
+                "twoHundredDayAverage": {
+                    "raw": 94.38616,
+                    "fmt": "94.39"
+                },
+                "askSize": {
+                    "raw": 10,
+                    "fmt": "10",
+                    "longFmt": "10"
+                },
+                "fiftyTwoWeekHighChange": {
+                    "raw": -49.795,
+                    "fmt": "-49.79"
+                },
+                "fiftyTwoWeekRange": {
+                    "raw": "32.27 - 175.67",
+                    "fmt": "32.27 - 175.67"
+                },
+                "fiftyDayAverageChange": {
+                    "raw": -8.821182,
+                    "fmt": "-8.82"
+                },
+                "exchangeDataDelayedBy": 0,
+                "firstTradeDateMilliseconds": 1265898600000,
+                "averageDailyVolume3Month": {
+                    "raw": 35468473,
+                    "fmt": "35.468M",
+                    "longFmt": "35,468,473"
+                },
+                "fiftyTwoWeekLow": {
+                    "raw": 32.27,
+                    "fmt": "32.27"
+                },
+                "market": "us_market",
+                "regularMarketVolume": {
+                    "raw": 17912855,
+                    "fmt": "17.913M",
+                    "longFmt": "17,912,855"
+                },
+                "quoteSourceName": "Nasdaq Real Time Price",
+                "messageBoardId": "finmb_98126597",
+                "priceHint": 2,
+                "regularMarketDayLow": {
+                    "raw": 125.57,
+                    "fmt": "125.57"
+                },
+                "exchange": "NMS",
+                "sourceInterval": 15,
+                "ytdReturn": {
+                    "raw": 12.75,
+                    "fmt": "12.75%"
+                },
+                "shortName": "ProShares UltraPro QQQ",
+                "region": "US",
+                "fiftyDayAverageChangePercent": {
+                    "raw": -0.06548948,
+                    "fmt": "-6.55%"
+                },
+                "fullExchangeName": "NasdaqGS",
+                "gmtOffSetMilliseconds": -14400000,
+                "regularMarketOpen": {
+                    "raw": 129.29,
+                    "fmt": "129.29"
+                },
+                "regularMarketTime": {
+                    "raw": 1601310302,
+                    "fmt": "12:25PM EDT"
+                },
+                "regularMarketChangePercent": {
+                    "raw": 2.7886665,
+                    "fmt": "2.79%"
+                },
+                "quoteType": "ETF",
+                "fiftyTwoWeekLowChange": {
+                    "raw": 93.604996,
+                    "fmt": "93.60"
+                },
+                "averageDailyVolume10Day": {
+                    "raw": 47040250,
+                    "fmt": "47.04M",
+                    "longFmt": "47,040,250"
+                },
+                "fiftyTwoWeekHighChangePercent": {
+                    "raw": -0.2834576,
+                    "fmt": "-28.35%"
+                },
+                "tradeable": false,
+                "currency": "USD",
+                "fiftyTwoWeekHigh": {
+                    "raw": 175.67,
+                    "fmt": "175.67"
+                },
+                "regularMarketPreviousClose": {
+                    "raw": 122.46,
+                    "fmt": "122.46"
+                },
+                "exchangeTimezoneName": "America/New_York",
+                "trailingThreeMonthReturns": {
+                    "raw": 104.97,
+                    "fmt": "104.97%"
+                },
+                "bidSize": {
+                    "raw": 12,
+                    "fmt": "12",
+                    "longFmt": "12"
+                },
+                "regularMarketChange": {
+                    "raw": 3.415001,
+                    "fmt": "3.42"
+                },
+                "fiftyDayAverage": {
+                    "raw": 134.69618,
+                    "fmt": "134.70"
+                },
+                "exchangeTimezoneShortName": "EDT",
+                "marketState": "REGULAR",
+                "regularMarketPrice": {
+                    "raw": 125.875,
+                    "fmt": "125.88"
+                },
+                "ask": {
+                    "raw": 126.54,
+                    "fmt": "126.54"
+                },
+                "bid": {
+                    "raw": 126.59,
+                    "fmt": "126.59"
+                },
+                "triggerable": true,
+                "longName": "ProShares UltraPro QQQ"
+            }
+        ],
+        "error": null
+    }
+}
+```
 ## Google App Engine Deployment
 An `app.yaml` file is required to deploy as an App Engine application. 
 Create an app.yaml file using the following directions:
