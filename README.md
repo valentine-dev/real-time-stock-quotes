@@ -30,72 +30,273 @@ npm run build && rmdir /S /Q ..\docs &&  mkdir ..\docs && xcopy /S .\build\. ..\
 5. Update index.html in the `docs` folder to replace `href="\` with `href="`, `src="\` with `src="`.
 
 ## Sample Response
-GIB.A:
+From TSX - https://app.quotemedia.com/datatool/getEnhancedQuotes.json?symbols=GIB.A&token=7abe89f132178a218af699b6fe8f649336e9e47ae466945adda5a59e131ae612:
 ```json
 {
-   "equityinfo":{
-      "longname":"CGI Inc. Class A Subordinate  Voting Shares",
-      "shortname":"CGI Group Cl A S"
-   },
-   "pricedata":{
-      "changepercent":-0.182371,
-      "high":99.07,
-      "lasttradedatetime":"2019-05-31T16:00:00-04:00",
-      "last":98.52,
-      "low":98.26,
-      "change":-0.18,
-      "tradevolume":3141,
-      "prevclose":98.7,
-      "tick":1,
-      "lastmarketidentificationcode":"TSX",
-      "open":98.27,
-      "sharevolume":466518
-   },
-   "datetime":"2019-06-01T05:47:06-04:00",
-   "datatype":"equity",
-   "entitlement":"RT",
-   "key":{
-      "exShName":"TSX",
-      "symbol":"GIB.A:CA",
-      "exchange":"TSX",
-      "exLgName":"Toronto Stock Exchange"
-   },
-   "symbolstring":"GIB.A"
+    "results": {
+        "copyright": "Copyright (c) 2020 QuoteMedia, Inc.",
+        "symbolcount": 1,
+        "quote": [
+            {
+                "key": {
+                    "symbol": "GIB.A:CA",
+                    "exchange": "TSX",
+                    "exLgName": "Toronto Stock Exchange",
+                    "exShName": "TSX"
+                },
+                "equityinfo": {
+                    "longname": "CGI Inc. Class A Subordinate Voting Shares",
+                    "shortname": "CGI Inc."
+                },
+                "status": {},
+                "pricedata": {
+                    "last": 90.65,
+                    "change": 0.81,
+                    "changepercent": 0.901603,
+                    "tick": -1,
+                    "open": 90.27,
+                    "high": 91.59,
+                    "low": 90.13,
+                    "prevclose": 89.84,
+                    "bid": 90.62,
+                    "ask": 90.67,
+                    "bidsize": 100,
+                    "asksize": 100,
+                    "rawbidsize": 100,
+                    "rawasksize": 100,
+                    "tradevolume": 1151,
+                    "sharevolume": 125284,
+                    "vwap": 90.9676922,
+                    "lasttradedatetime": "2020-09-28T12:29:40-04:00",
+                    "totalvalue": 11396207.00,
+                    "lastmarketidentificationcode": "TSX",
+                    "bidmarketidentificationcode": "TSX",
+                    "askmarketidentificationcode": "TSX",
+                    "imbalance": {
+                        "imbalancesize": 0
+                    }
+                },
+                "fundamental": {
+                    "sharesoutstanding": 230589242,
+                    "shareclasslevelsharesoutstanding": 230589242,
+                    "totalsharesoutstanding": 259315428,
+                    "marketcap": 23506943548,
+                    "eps": 4.48999977,
+                    "peratio": 20.0,
+                    "pbratio": 3.382,
+                    "beta": 0.929967999458313,
+                    "week52high": {
+                        "date": "2020-01-24",
+                        "content": 114.49
+                    },
+                    "week52low": {
+                        "date": "2020-03-23",
+                        "content": 67.24
+                    },
+                    "week52highvwap": {
+                        "date": "2020-01-17",
+                        "content": 113.4199
+                    },
+                    "week52lowvwap": {
+                        "date": "2020-03-23",
+                        "content": 69.1994
+                    },
+                    "week52highvol": {
+                        "date": "2020-06-19",
+                        "content": 3490205
+                    },
+                    "week52lowvol": {
+                        "date": "2020-07-03",
+                        "content": 96790
+                    },
+                    "week52avgvol": 668070
+                },
+                "classification": {
+                    "sector": "Technology",
+                    "industry": "Software"
+                },
+                "symbolstring": "GIB.A",
+                "datatype": "equity",
+                "entitlement": "RT",
+                "datetime": "2020-09-28T12:32:11-04:00"
+            }
+        ]
+    }
 }
 ```
-BBD.B:
+  
+From Yahoo! Finance - https://query1.finance.yahoo.com/v7/finance/quote?formatted=true&symbols=TQQQ:
 ```json
 {
-  "equityinfo": {
-    "longname": "Bombardier Inc. Class B Subordinate Voting Shares",
-    "shortname": "Bombardier Cl B "
-  },
-  "pricedata": {
-    "changepercent": 0.49505,
-    "high": 2.03,
-    "lasttradedatetime": "2019-05-31T16:17:43-04:00",
-    "last": 2.03,
-    "low": 1.985,
-    "change": 0.01,
-    "tradevolume": 5436,
-    "prevclose": 2.02,
-    "tick": -1,
-    "lastmarketidentificationcode": "TSX",
-    "open": 2.02,
-    "sharevolume": 7377181
-  },
-  "datetime": "2019-06-01T19:14:27-04:00",
-  "datatype": "equity",
-  "entitlement": "RT",
-  "key": {
-    "exShName": "TSX",
-    "symbol": "BBD.B:CA",
-    "exchange": "TSX",
-    "exLgName": "Toronto Stock Exchange"
-  },
-  "symbolstring": "BBD.B"
+    "quoteResponse": {
+        "result": [
+            {
+                "symbol": "TQQQ",
+                "trailingThreeMonthNavReturns": {
+                    "raw": 104.49,
+                    "fmt": "104.49%"
+                },
+                "twoHundredDayAverageChangePercent": {
+                    "raw": 0.33361712,
+                    "fmt": "33.36%"
+                },
+                "dividendDate": {
+                    "raw": 1427932800,
+                    "fmt": "2015-04-01",
+                    "longFmt": "2015-04-01T20:00"
+                },
+                "fiftyTwoWeekLowChangePercent": {
+                    "raw": 2.9006815,
+                    "fmt": "290.07%"
+                },
+                "language": "en-US",
+                "regularMarketDayRange": {
+                    "raw": "125.57 - 129.27",
+                    "fmt": "125.57 - 129.27"
+                },
+                "regularMarketDayHigh": {
+                    "raw": 129.27,
+                    "fmt": "129.27"
+                },
+                "twoHundredDayAverageChange": {
+                    "raw": 31.488838,
+                    "fmt": "31.49"
+                },
+                "twoHundredDayAverage": {
+                    "raw": 94.38616,
+                    "fmt": "94.39"
+                },
+                "askSize": {
+                    "raw": 10,
+                    "fmt": "10",
+                    "longFmt": "10"
+                },
+                "fiftyTwoWeekHighChange": {
+                    "raw": -49.795,
+                    "fmt": "-49.79"
+                },
+                "fiftyTwoWeekRange": {
+                    "raw": "32.27 - 175.67",
+                    "fmt": "32.27 - 175.67"
+                },
+                "fiftyDayAverageChange": {
+                    "raw": -8.821182,
+                    "fmt": "-8.82"
+                },
+                "exchangeDataDelayedBy": 0,
+                "firstTradeDateMilliseconds": 1265898600000,
+                "averageDailyVolume3Month": {
+                    "raw": 35468473,
+                    "fmt": "35.468M",
+                    "longFmt": "35,468,473"
+                },
+                "fiftyTwoWeekLow": {
+                    "raw": 32.27,
+                    "fmt": "32.27"
+                },
+                "market": "us_market",
+                "regularMarketVolume": {
+                    "raw": 17912855,
+                    "fmt": "17.913M",
+                    "longFmt": "17,912,855"
+                },
+                "quoteSourceName": "Nasdaq Real Time Price",
+                "messageBoardId": "finmb_98126597",
+                "priceHint": 2,
+                "regularMarketDayLow": {
+                    "raw": 125.57,
+                    "fmt": "125.57"
+                },
+                "exchange": "NMS",
+                "sourceInterval": 15,
+                "ytdReturn": {
+                    "raw": 12.75,
+                    "fmt": "12.75%"
+                },
+                "shortName": "ProShares UltraPro QQQ",
+                "region": "US",
+                "fiftyDayAverageChangePercent": {
+                    "raw": -0.06548948,
+                    "fmt": "-6.55%"
+                },
+                "fullExchangeName": "NasdaqGS",
+                "gmtOffSetMilliseconds": -14400000,
+                "regularMarketOpen": {
+                    "raw": 129.29,
+                    "fmt": "129.29"
+                },
+                "regularMarketTime": {
+                    "raw": 1601310302,
+                    "fmt": "12:25PM EDT"
+                },
+                "regularMarketChangePercent": {
+                    "raw": 2.7886665,
+                    "fmt": "2.79%"
+                },
+                "quoteType": "ETF",
+                "fiftyTwoWeekLowChange": {
+                    "raw": 93.604996,
+                    "fmt": "93.60"
+                },
+                "averageDailyVolume10Day": {
+                    "raw": 47040250,
+                    "fmt": "47.04M",
+                    "longFmt": "47,040,250"
+                },
+                "fiftyTwoWeekHighChangePercent": {
+                    "raw": -0.2834576,
+                    "fmt": "-28.35%"
+                },
+                "tradeable": false,
+                "currency": "USD",
+                "fiftyTwoWeekHigh": {
+                    "raw": 175.67,
+                    "fmt": "175.67"
+                },
+                "regularMarketPreviousClose": {
+                    "raw": 122.46,
+                    "fmt": "122.46"
+                },
+                "exchangeTimezoneName": "America/New_York",
+                "trailingThreeMonthReturns": {
+                    "raw": 104.97,
+                    "fmt": "104.97%"
+                },
+                "bidSize": {
+                    "raw": 12,
+                    "fmt": "12",
+                    "longFmt": "12"
+                },
+                "regularMarketChange": {
+                    "raw": 3.415001,
+                    "fmt": "3.42"
+                },
+                "fiftyDayAverage": {
+                    "raw": 134.69618,
+                    "fmt": "134.70"
+                },
+                "exchangeTimezoneShortName": "EDT",
+                "marketState": "REGULAR",
+                "regularMarketPrice": {
+                    "raw": 125.875,
+                    "fmt": "125.88"
+                },
+                "ask": {
+                    "raw": 126.54,
+                    "fmt": "126.54"
+                },
+                "bid": {
+                    "raw": 126.59,
+                    "fmt": "126.59"
+                },
+                "triggerable": true,
+                "longName": "ProShares UltraPro QQQ"
+            }
+        ],
+        "error": null
+    }
 }
-  ```
+```
 ## Google App Engine Deployment
 An `app.yaml` file is required to deploy as an App Engine application. 
 Create an app.yaml file using the following directions:
