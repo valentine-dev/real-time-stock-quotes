@@ -14,22 +14,21 @@ class GetQuote extends Component {
    }
 
    getQuote = () => {
-      axios.get('/quote?symbol=' + this.state.symbol + '&token=' + this.props.token)
+      const symbol = this.state.symbol.toLowerCase().startsWith("t.") ? this.state.symbol.slice(2) + ".to"
+         : (this.state.symbol.toLowerCase().startsWith("c.") ? this.state.symbol.slice(2) + ".cn" 
+         : (this.state.symbol.toLowerCase().startsWith("v.") ? this.state.symbol.slice(2) + ".v" : this.state.symbol));
+      axios.get('https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v7/finance/quote?formatted=true&symbols=' + symbol)
          .then(res => {
             //console.log(res);
-            const quote = res.data;
+            const quotes = res.data.quoteResponse.result;
             //console.log(quote);
-            if (quote && quote.pricedata && quote.pricedata.last) {
+            if (quotes && quotes.length >  0) {
                //console.log("Got last price ... ");
-               const message = quote.symbolstring + ': ' + quote.equityinfo.longname + ' on ' + quote.key.exLgName;
+               const message = quotes[0].longName + ' on ' + quotes[0].fullExchangeName;
                this.setState({ ...this.state, "errorMessage": null, 'message': message });
-               this.props.handleSubmit(quote);
-            } else if (quote && quote.name === 'Error') {
-               const message = quote.name + ": " + quote.message;
-               //console.log(message);
-               this.setState({ ...this.state, "errorMessage": message });
+               this.props.handleSubmit(quotes[0]);
             } else {
-               this.setState({ ...this.state, "errorMessage": "Oops, something went wrong!" });
+               this.setState({ ...this.state, "errorMessage": "There is no data for this symbol." });
             }
          })
          .catch(err => {
@@ -74,9 +73,11 @@ class GetQuote extends Component {
             <Form autoComplete="on" onSubmit={e => e.preventDefault()} >
                <Form.Group as={Row} >
                   <Col xs="9">
-                     <Form.Control type="text" autocorrect="off" autocapitalize="off" onChange={this.handleInputChange} placeholder="e.g. rba, tqqq:us, or j:cnx" />
+                     <Form.Control type="text" autoCorrect="off" autoCapitalize="off" onChange={this.handleInputChange} placeholder="a, t.h, c.j, or v.c" />
                   </Col>
-                  {disableGet ? null : <Col xs="2"><Button onClick={this.getQuote}>GO</Button></Col>}
+                  {disableGet ? <Col xs="2"><Button onClick={this.getQuote} disabled>GO</Button></Col> 
+                     : <Col xs="2"><Button onClick={this.getQuote}>GO</Button></Col>
+                  }
                </Form.Group>
             </Form>
             {displayMessage ? <Alert variant='info'>{this.state.message}</Alert> : null}

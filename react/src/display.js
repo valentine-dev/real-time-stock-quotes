@@ -30,27 +30,31 @@ const DisplayBody = props => {
    const rows = props.rows.map((row, index) => {
 
       const dateOptions = { month: 'numeric', day: 'numeric' };
-      const dateStr = new Date(row.pricedata.lasttradedatetime).toLocaleDateString('en-CA', dateOptions);
+      const dateStr = new Date(row.regularMarketTime.raw*1000).toLocaleDateString('en-CA', dateOptions);
       const timeOptions = { hour12: false };
-      const timeStr = new Date(row.pricedata.lasttradedatetime).toLocaleTimeString('en-CA', timeOptions);
-      const changePercent = row.pricedata.changepercent.toFixed(2) + "%";
-      const textColor = row.pricedata.change === 0 ? "text-dark"
-         : (row.pricedata.change > 0 ? "text-success" : "text-danger");
-      const colonIndex = row.symbolstring.indexOf(':');
+      const timeStr = new Date(row.regularMarketTime.raw*1000).toLocaleTimeString('en-CA', timeOptions);
+      const changePercent = row.regularMarketChangePercent.fmt;
+      const change = row.regularMarketChange.fmt;
+      const textColor = row.regularMarketChange.raw === 0 ? "text-dark"
+         : (row.regularMarketChange.raw > 0 ? "text-success" : "text-danger");
+      const colonIndex = row.symbol.indexOf('.');
+      const price = row.regularMarketPrice.fmt;
+      const volume = row.regularMarketVolume.fmt;
 
       const symColor = colonIndex > -1 ? 
-         (row.symbolstring.slice(colonIndex+1).toLowerCase() === 'us' ? "text-success" : "text-secondary")
-         : "text-primary";
+         (row.symbol.slice(colonIndex+1).toLowerCase() === 'to' ? "text-primary" 
+         : (row.symbol.slice(colonIndex+1).toLowerCase() === 'cn' ? "text-secondary" : "text-dark"))
+         : "text-success";
 
-      const symbolString = colonIndex > -1 ? row.symbolstring.slice(0,colonIndex) : row.symbolstring;
-
+      const symbolString = colonIndex > -1 ? row.symbol.slice(0,colonIndex) : row.symbol;
+      const currency = row.currency;
       return (
 
          <tr key={index} class="text-right">
             <td class="text-left">{dateStr} {timeStr}</td>
-            <td class={symColor}>{symbolString} ({row.key.exchange})</td>
-            <td>{row.pricedata.last} ({row.pricedata.sharevolume})</td>
-            <td class={textColor}>{row.pricedata.change} ({changePercent})</td>
+            <td class={symColor}>{symbolString} ({row.fullExchangeName})</td>
+            <td>{currency} <span class="font-weight-bold">{price}</span> ({volume})</td>
+            <td class={textColor}>{change} ({changePercent})</td>
          </tr >
       )
    });
