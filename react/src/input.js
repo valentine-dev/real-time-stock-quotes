@@ -25,11 +25,16 @@ class GetQuote extends Component {
             //console.log(quote);
             if (quotes && quotes.length >  0) {
                //console.log("Got last price ... ");
-               const message = quotes[0].longName + ' on ' + quotes[0].fullExchangeName;
-               this.setState({ ...this.state, "errorMessage": null, 'message': message });
-               this.props.handleSubmit(quotes[0]);
+               const message = quotes[0].longName ?  quotes[0].longName + ' on ' + quotes[0].fullExchangeName
+                  : (quotes[0].shortName ? quotes[0].longName + ' on ' + quotes[0].fullExchangeName : null);
+               if (message) {
+                  this.setState({ ...this.state, "errorMessage": null, 'message': message });
+                  this.props.handleSubmit(quotes[0]);
+               } else {
+                  this.setState({ ...this.state, "errorMessage": "Sorry, no data found." });
+               }               
             } else {
-               this.setState({ ...this.state, "errorMessage": "There is no data for this symbol." });
+               this.setState({ ...this.state, "errorMessage": "Sorry, no data found." });
             }
          })
          .catch(err => {
