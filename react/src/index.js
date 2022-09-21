@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import Badge from 'react-bootstrap/Badge';
 
 require('dotenv').config();
 
@@ -24,15 +25,15 @@ class App extends Component {
       return (
          <Container>
             <Navbar bg="dark" variant="dark" sticky="top" expand="sm">
-               <Navbar.Brand href="https://enjoyit.ca">
-                  enjoyit.ca &#x00A9; 2022
+               <Navbar.Brand>
+                  <span role="img" aria-label="Stock">&#x1F4C8;</span> <a href="https://enjoyit.ca" title="go to enjoyit.ca">enjoyit.ca</a> <small>&#x00A9; 2022</small> <Badge variant="light">v{process.env.REACT_APP_VERSION}</Badge>
                </Navbar.Brand>
-               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-               <Navbar.Collapse id="basic-navbar-nav">
-               <Nav className="mr-auto">
-               <Nav.Link href="mailto:feedback@enjoyit.ca" title="provide feedback to feedback@enjoyit.ca">Feedback</Nav.Link>
-               <Nav.Link href="mailto:donations@enjoyit.ca" title="eTransfer less than $10 to donations@enjoyit.ca">Donations</Nav.Link>
-               </Nav>
+               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+               <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
+                  <Nav>
+                  <Nav.Link href="mailto:feedback@enjoyit.ca" title="provide feedback to feedback@enjoyit.ca">Feedback</Nav.Link>
+                  <Nav.Link href="mailto:donations@enjoyit.ca" title="eTransfer less than $10 to donations@enjoyit.ca">Donations</Nav.Link>
+                  </Nav>   
                </Navbar.Collapse>
             </Navbar>            
             <Notes />

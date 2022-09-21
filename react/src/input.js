@@ -17,7 +17,8 @@ class GetQuote extends Component {
    getQuote = () => {
       const symbol = this.state.exchange === "TSX" ? this.state.symbol.toLowerCase() + ".to"
          : (this.state.exchange === "CSE" ? this.state.symbol.toLowerCase() + ".cn" 
-         : (this.state.exchange === "TSXV"? this.state.symbol.toLowerCase() + ".v" : this.state.symbol));
+         : (this.state.exchange === "TSXV"? this.state.symbol.toLowerCase() + ".v" 
+         : (this.state.exchange === "NEO"? this.state.symbol.toLowerCase() + ".ne" : this.state.symbol)));
       axios.get('https://enjoyit-cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v7/finance/quote?formatted=true&symbols=' + symbol)
          .then(res => {
             //console.log(res);
@@ -87,6 +88,7 @@ class GetQuote extends Component {
                         <option value="TSX">TSX</option>
                         <option value="TSXV">TSV</option>
                         <option value="CSE">CSE</option>
+                        <option value="NEO">NEO</option>
                      </Form.Control>
                   </Col>
                   <Col xs="5">
