@@ -33,25 +33,23 @@ class GetQuote extends Component {
          })
          .catch(err => {
             //console.log(err);
-            if (err.response) {
+            let message;
+            if (err.response.data) {
                // The request was made and the server responded with a status code
                // that falls out of the range of 2xx
                //console.log(err.response.data);
                //console.log(err.response.status);
                //console.log(err.response.headers);
-               let message;
                if (typeof err.response.data === 'string') {
                   message = err.response.data.includes('Cannot GET /quote') ? 'The API backend is not available. Please have a check.' : 'HTTP ' + err.response.status + ': ' + err.response.data;
-               } else if (typeof err.response.data === 'object') {
-                  message = err.response.data.name + ": " + err.response.data.message;
                } else {
-                  message = "Oops, something went wrong!";
-               }
+                  message = err.response.data.name + ": " + err.response.data.message;
+               } 
                this.setState({ ...this.state, "errorMessage": message });
             } else {
-               this.setState({ ...this.state, "errorMessage": "Oops, something went wrong!" });
+               message = err.name + ' (' + err.code + '): ' + err.message;
+               this.setState({ ...this.state, "errorMessage": message });
             }
-
          });
    }
 
