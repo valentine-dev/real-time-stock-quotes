@@ -18,7 +18,7 @@ const DisplayHeader = () => {
       <thead>
          <tr class="text-right">
             <th class="text-left">Time</th>
-            <th>Symbol (Exchange)</th>
+            <th>Symbol</th>
             <th>$ (Volume)</th>
             <th>Change (%)</th>
          </tr>
@@ -43,7 +43,7 @@ const DisplayBody = props => {
 
       const symColor = colonIndex > -1 ? 
          (row.symbol.slice(colonIndex+1).toLowerCase() === 'to' ? "text-primary" 
-         : (row.symbol.slice(colonIndex+1).toLowerCase() === 'cn' ? "text-secondary" : "text-dark"))
+         : (row.symbol.slice(colonIndex+1).toLowerCase() === 'cn' ? "text-light" : "text-dark"))
          : "text-success";
 
       const symbolString = colonIndex > -1 ? row.symbol.slice(0,colonIndex) : row.symbol;
@@ -52,8 +52,8 @@ const DisplayBody = props => {
 
          <tr key={index} class="text-right">
             <td class="text-left">{dateStr} {timeStr}</td>
-            <td class={symColor}>{symbolString} ({row.fullExchangeName})</td>
-            <td>{currency} <span class="font-weight-bold">{price}</span> ({volume})</td>
+            <td class={symColor}>{symbolString}</td>
+            <td>{currency}<span class="font-weight-bold">{price}</span> ({volume})</td>
             <td class={textColor}>{change} ({changePercent})</td>
          </tr >
       )

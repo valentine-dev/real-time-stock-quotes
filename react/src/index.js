@@ -25,7 +25,7 @@ class App extends Component {
          <Container>
             <Navbar bg="dark" variant="dark" sticky="top" expand="sm">
                <Navbar.Brand href="https://enjoyit.ca">
-                  {'enjoyit.ca'}
+                  enjoyit.ca <span role="img" aria-label="Stock">&#x1F4C8;</span> 2022
                </Navbar.Brand>
                <Navbar.Toggle aria-controls="basic-navbar-nav" />
                <Navbar.Collapse id="basic-navbar-nav">
@@ -34,13 +34,7 @@ class App extends Component {
                <Nav.Link href="mailto:donations@enjoyit.ca" title="eTransfer less than $10 to donations@enjoyit.ca">Donations</Nav.Link>
                </Nav>
                </Navbar.Collapse>
-            </Navbar>
-            <Alert variant="success">
-               <Alert.Heading>FREE Real-Time Quotes for North American Stocks</Alert.Heading>
-               <p>
-                  For non-common stocks, Yahoo! Finance convention is used.
-               </p>
-            </Alert>
+            </Navbar>            
             <Notes />
             <GetQuote handleSubmit={this.getQuote} token={process.env.REACT_APP_TOKEN} />
             {this.state.latestQuotes.length > 0 ? <Display data={this.state.latestQuotes} /> : null}
@@ -53,22 +47,17 @@ const Notes = () => {
    const [show, setShow] = useState(true);
 
    if (show) {
-      const rows = 
-         [
-            ['success','US exchanges','just enter the stock symbol.'],
-            ['primary','Toronto Stock Exchange','prepend ', 't.', 't.h'],
-            ['dark','TSX Venture Exchange','prepend ','v.', 'v.c'],
-            ['secondary','Canadian Securities Exchange','prepend ', 'c.', 'c.j']
-         ].map((row, index) => {
-            return (
-               <Alert variant={row[0]} dismissible onClose={() => setShow(false)}>
-                   For {row[1]}, {row[2]}
-                   {row.length > 3 ? <><code>{row[3]}</code>{' like '}<code>{row[4]}</code></> : null}
-               </Alert>
-            )
-         });
       return (
-         <>{rows}</>
+         <Alert variant="primary" dismissible onClose={() => setShow(false)}>
+            <Alert.Heading>FREE Real-Time Quotes for North American Stocks</Alert.Heading>
+            <p>For non-common stocks, Yahoo! Finance convention is used.</p>
+            <p>
+               For US exchanges, enter the stock symbol. <br/>
+               For Toronto Stock Exchange, prepend <code>t.</code> like <code>t.h</code>. <br/>
+               For TSX Venture Exchange, prepend <code>v.</code> like <code>v.c</code>.<br/>
+               For Canadian Securities Exchange, prepend <code>c.</code> like <code>c.h</code>.
+            </p>
+         </Alert>         
       )
    }
    return <></>;

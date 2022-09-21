@@ -10,7 +10,7 @@ import axios from 'axios';
 class GetQuote extends Component {
    constructor(props) {
       super(props);
-      this.state = { symbol: null, errorMessage: null, message: null }
+      this.state = { symbol: null, errorMessage: null, message: null}
    }
 
    getQuote = () => {
@@ -70,6 +70,7 @@ class GetQuote extends Component {
       const displayMessage = this.state.message === null ? false : true;
       return (
          <Container>
+            <Alert variant='info'>
             <Form autoComplete="on" onSubmit={e => e.preventDefault()} >
                <Form.Group as={Row} >
                   <Col xs="9">
@@ -80,6 +81,7 @@ class GetQuote extends Component {
                   }
                </Form.Group>
             </Form>
+            </Alert>
             {displayMessage ? <Alert variant='info'>{this.state.message}</Alert> : null}
             {displayError ? <Alert variant='warning'>{this.state.errorMessage}</Alert> : null}
          </Container>
