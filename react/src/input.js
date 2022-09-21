@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, Component } from 'react';
 import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
@@ -6,17 +6,18 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import axios from 'axios';
+import Toast from 'react-bootstrap/Toast';
 
 class GetQuote extends Component {
    constructor(props) {
       super(props);
-      this.state = { symbol: null, errorMessage: null, message: null}
+      this.state = { exchange: null, symbol: null, errorMessage: null, message: null}
    }
 
    getQuote = () => {
-      const symbol = this.state.symbol.toLowerCase().startsWith("t.") ? this.state.symbol.slice(2) + ".to"
-         : (this.state.symbol.toLowerCase().startsWith("c.") ? this.state.symbol.slice(2) + ".cn" 
-         : (this.state.symbol.toLowerCase().startsWith("v.") ? this.state.symbol.slice(2) + ".v" : this.state.symbol));
+      const symbol = this.state.exchange === "TSX" ? this.state.symbol.toLowerCase() + ".to"
+         : (this.state.exchange === "CSE" ? this.state.symbol.toLowerCase() + ".cn" 
+         : (this.state.exchange === "TSXV"? this.state.symbol.toLowerCase() + ".v" : this.state.symbol));
       axios.get('https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v7/finance/quote?formatted=true&symbols=' + symbol)
          .then(res => {
             //console.log(res);
@@ -34,7 +35,7 @@ class GetQuote extends Component {
          .catch(err => {
             //console.log(err);
             let message;
-            if (err.response.data) {
+            if (err.response && err.response.data) {
                // The request was made and the server responded with a status code
                // that falls out of the range of 2xx
                //console.log(err.response.data);
@@ -53,8 +54,12 @@ class GetQuote extends Component {
          });
    }
 
-   handleInputChange = (event) => {
+   handleSymbolUpdate = (event) => {
       this.setState({ ...this.state, "symbol": event.target.value.trim(), "errorMessage": null, "message": null });
+   }
+
+   handleExchangeUpdate = e => {
+      this.setState({ ...this.state, "exchange": e.target.value, "errorMessage": null, "message": null });
    }
 
    render() {
@@ -71,19 +76,39 @@ class GetQuote extends Component {
             <Alert variant='info'>
             <Form autoComplete="on" onSubmit={e => e.preventDefault()} >
                <Form.Group as={Row} >
-                  <Col xs="9">
-                     <Form.Control type="text" autoCorrect="off" autoCapitalize="off" onChange={this.handleInputChange} placeholder="a, t.h, c.j, or v.c" />
+                  <Col xs="4">
+                     <Form.Control as="select" onChange={this.handleExchangeUpdate} placeholder="Exchange">
+                        <option value="US">US</option>
+                        <option value="TSX">TSX</option>
+                        <option value="TSXV">TSV</option>
+                        <option value="CSE">CSE</option>
+                     </Form.Control>
                   </Col>
-                  {disableGet ? <Col xs="2"><Button onClick={this.getQuote} disabled>GO</Button></Col> 
-                     : <Col xs="2"><Button onClick={this.getQuote}>GO</Button></Col>
+                  <Col xs="5">
+                     <Form.Control type="text" autoCorrect="off" autoCapitalize="off" onChange={this.handleSymbolUpdate} placeholder="Symbol" />
+                  </Col>
+                  {disableGet ? <Col xs="2"><Button variant="info" onClick={this.getQuote} disabled><span role="img" aria-label="eyes">&#x1f440;</span></Button></Col> 
+                     : <Col xs="2"><Button onClick={this.getQuote}><span role="img" aria-label="eyes">&#x1f440;</span></Button></Col>
                   }
                </Form.Group>
             </Form>
             </Alert>
-            {displayMessage ? <Alert variant='info'>{this.state.message}</Alert> : null}
+            {displayMessage ? <div className='pb-3'><DisplayMessage msg={this.state.message}/></div>: null}
             {displayError ? <Alert variant='warning'>{this.state.errorMessage}</Alert> : null}
          </Container>
       )
    }
 }
+
+const DisplayMessage = props => {
+   const msg = props.msg;
+   const [show, setShow] = useState(true);
+
+   
+   return (
+      <Toast delay={3000} autohide show={show} onClose={() => setShow(false)}><Toast.Body>{msg}</Toast.Body></Toast>
+   )
+   
+};
+
 export default GetQuote;

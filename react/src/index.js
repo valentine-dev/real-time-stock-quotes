@@ -25,7 +25,7 @@ class App extends Component {
          <Container>
             <Navbar bg="dark" variant="dark" sticky="top" expand="sm">
                <Navbar.Brand href="https://enjoyit.ca">
-                  enjoyit.ca <span role="img" aria-label="Stock">&#x1F4C8;</span> 2022
+                  enjoyit.ca &#x00A9; 2022
                </Navbar.Brand>
                <Navbar.Toggle aria-controls="basic-navbar-nav" />
                <Navbar.Collapse id="basic-navbar-nav">
@@ -50,13 +50,7 @@ const Notes = () => {
       return (
          <Alert variant="primary" dismissible onClose={() => setShow(false)}>
             <Alert.Heading>FREE Real-Time Quotes for North American Stocks</Alert.Heading>
-            <p>For non-common stocks, Yahoo! Finance convention is used.</p>
-            <p>
-               For US exchanges, enter the stock symbol. <br/>
-               For Toronto Stock Exchange, prepend <code>t.</code> like <code>t.h</code>. <br/>
-               For TSX Venture Exchange, prepend <code>v.</code> like <code>v.c</code>.<br/>
-               For Canadian Securities Exchange, prepend <code>c.</code> like <code>c.h</code>.
-            </p>
+            <p>For non-common stocks, Yahoo! Finance convention is used.</p>            
          </Alert>         
       )
    }

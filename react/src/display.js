@@ -16,11 +16,11 @@ class Display extends Component {
 const DisplayHeader = () => {
    return (
       <thead>
-         <tr class="text-right">
-            <th class="text-left">Time</th>
-            <th>Symbol</th>
-            <th>$ (Volume)</th>
-            <th>Change (%)</th>
+         <tr className="text-right">
+            <th className="text-left"><span role="img" aria-label="Date">&#x1F4C6;</span> <span role="img" aria-label="Time">&#x23F2;</span></th>
+            <th><span role="img" aria-label="Symbol">&#x1F4C8;</span></th>
+            <th><span role="img" aria-label="Price">&#x1F4B0;</span> <span role="img" aria-label="Volume">&#x1F4CA;</span></th>
+            <th>&#x00B1; %</th>
          </tr>
       </thead>
    )
@@ -43,18 +43,18 @@ const DisplayBody = props => {
 
       const symColor = colonIndex > -1 ? 
          (row.symbol.slice(colonIndex+1).toLowerCase() === 'to' ? "text-primary" 
-         : (row.symbol.slice(colonIndex+1).toLowerCase() === 'cn' ? "text-light" : "text-dark"))
+         : (row.symbol.slice(colonIndex+1).toLowerCase() === 'cn' ? "text-danger" : "text-dark"))
          : "text-success";
 
       const symbolString = colonIndex > -1 ? row.symbol.slice(0,colonIndex) : row.symbol;
       const currency = row.currency;
       return (
 
-         <tr key={index} class="text-right">
-            <td class="text-left">{dateStr} {timeStr}</td>
-            <td class={symColor}>{symbolString}</td>
-            <td>{currency}<span class="font-weight-bold">{price}</span> ({volume})</td>
-            <td class={textColor}>{change} ({changePercent})</td>
+         <tr key={index} className="text-right">
+            <td className="text-left">{dateStr} <span className="font-weight-bold">{timeStr}</span></td>
+            <td className={symColor}>{symbolString}</td>
+            <td>{currency}<span className="font-weight-bold">{price}</span> {volume}</td>
+            <td className={textColor}><span className="font-weight-bold">{change}</span> {changePercent}</td>
          </tr >
       )
    });
