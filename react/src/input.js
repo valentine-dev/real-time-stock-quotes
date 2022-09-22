@@ -77,6 +77,7 @@ class GetQuote extends Component {
 
       const displayError = this.state.errorMessage === null ? false : true;
       const displayMessage = this.state.message === null ? false : true;
+
       return (
          <Container>
             <Alert variant='info'>
