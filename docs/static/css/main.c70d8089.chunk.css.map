@@ -1,0 +1,1 @@
+{"version":3,"sources":["QuoteDisplay.css"],"names":[],"mappings":"AAAA,oBACI,qBACJ","file":"main.c70d8089.chunk.css","sourcesContent":[".table td, .table.th {\r\n    vertical-align: middle\r\n}\r\n\r\n"]}
